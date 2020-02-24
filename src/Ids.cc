@@ -49,8 +49,8 @@ Object userid::Ids(const CallbackInfo &info)
     return Object::New(env);
   }
 
-  auto utfname = std::string(info[0].As<String>()).c_str();
-  auto user = getpwnam(utfname);
+  auto utfname = std::string(info[0].As<String>());
+  auto user = getpwnam(utfname.c_str());
 
   if (!user)
   {
